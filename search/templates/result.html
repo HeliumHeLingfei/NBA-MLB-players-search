@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>result</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			font: 14px/1.4 "Microsoft Yahei", Tahoma, Georgia, Serif;
+		}
+
+		#page-wrap {
+			margin: 10px;
+		}
+
+		p {
+			margin: 20px 0;
+		}
+
+		/*
+        Generic Styling, for Desktops/Laptops
+        */
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			background: #fff
+		}
+
+		/* Zebra striping */
+		tr:nth-of-type(odd) {
+			background: #eee;
+		}
+
+		th {
+			background: #333;
+			color: white;
+			font-weight: bold;
+		}
+
+		td, th {
+			padding: 6px;
+			border: 1px solid #ccc;
+			text-align: left;
+		}
+
+		@media only screen and (max-width: 760px),
+		(min-device-width: 768px) and (max-device-width: 1024px) {
+
+			/* Force table to not be like tables anymore */
+			table, thead, tbody, th, td, tr {
+				display: block;
+			}
+
+			/* Hide table headers (but not display: none;, for accessibility) */
+			thead tr {
+				position: relative;
+			{#				top: -9999px;#}{#				left: -9999px;#}
+			}
+
+			tr {
+				border: 1px solid #ccc;
+			}
+
+			td {
+				/* Behave  like a "row" */
+				border: none;
+				border-bottom: 1px solid #eee;
+				position: relative;
+				padding-left: 50%;
+			}
+
+			td:before {
+				/* Now like a table header */
+				position: relative;
+				/* Top/left values mimic padding */
+				top: 6px;
+				left: 6px;
+				width: 45%;
+				padding-right: 10px;
+				white-space: nowrap;
+			}
+
+			/*
+            Label the data
+            */
+		}
+
+		/* Smartphones (portrait and landscape) ----------- */
+		@media only screen
+		and (min-device-width: 320px)
+		and (max-device-width: 480px) {
+			body {
+				padding: 0;
+				margin: 0;
+			}
+		}
+
+		/* iPads (portrait and landscape) ----------- */
+		@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+			body {
+				width: 70%;
+			}
+		}
+
+	</style>
+</head>
+<body>
+<div class="re" style="margin:0 auto;border:1px solid #000; width:50px; height:20px;">
+    <span class="step-links" style="margin:0;text-align: center;">
+        <a href="search">return</a>
+    </span>
+</div>
+{% for i in contacts %}
+	<div id="page-wrap" style="margin:50px 0 0">
+		<h2>{{ i.name }}</h2>
+		{% if 'image' in i %}
+			{% load staticfiles %}
+			<img src="{% static i.image %}">
+		{% endif %}
+		<table>
+			<thead>
+			<tr>
+				<th>属性</th>
+				<th>内容</th>
+			</tr>
+			</thead>
+			<tbody>
+			{% for j,k in i.items %}
+				{% if j != 'image' and j != 'name' %}
+					<tr>
+						<td>{{ j }}</td>
+							<td>{{ k }}</td>
+					</tr>
+				{% endif %}
+			{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endfor %}
+<br><br>
+<div class="pagination" style="margin:0 auto;border:1px solid #000; width:200px; height:20px;">
+    <span class="step-links" style="margin:0;text-align: center;">
+        {% if contacts.has_previous %}
+            <a href="?page={{ contacts.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ contacts.number }} of {{ contacts.paginator.num_pages }}.
+        </span>
+
+        {% if contacts.has_next %}
+            <a href="?page={{ contacts.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+</body>
+</html>

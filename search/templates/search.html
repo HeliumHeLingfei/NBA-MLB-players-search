@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>search</title>
+	<!-- Custom Theme files -->
+	{% load staticfiles %}
+	<link href="{% static "/css/style1231.css" %} " rel="stylesheet" type="text/css" media="all">
+	<!-- Custom Theme files -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="keywords"
+	      content="Flat Search Box Responsive, Login form web template, Sign up Web Templates, Flat Web Templates, Login signup Responsive web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design">
+	<!--Google Fonts-->
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"
+	      rel="stylesheet" type="text/css">
+	<!--Google Fonts-->
+</head>
+<body>
+<!--search start here-->
+<div class="search">
+	<div class="s-bar">
+		<form action="/result" method="get">
+			<script>
+                function ceshi1(val) {
+                    var lea = val.toLowerCase();
+                    var text = document.getElementsByClassName("mlb");
+                    for (var i = 0; i < text.length; i++) {
+                        text[i].style.cssText = "display: inline";
+                    }
+                    var text = document.getElementsByClassName("nba");
+                    for (var i = 0; i < text.length; i++) {
+                        text[i].style.cssText = "display: inline";
+                    }
+                    if (lea === 'nba') {
+                        var text = document.getElementsByClassName("nba");
+                        for (var i = 0; i < text.length; i++) {
+                            text[i].style.cssText = "display: inline";
+                        }
+                        var text = document.getElementsByClassName("mlb");
+                        for (var i = 0; i < text.length; i++) {
+                            text[i].style.cssText = "display: none";
+                        }
+                    }
+                    if (lea === 'mlb') {
+                        var text = document.getElementsByClassName("mlb");
+                        for (var i = 0; i < text.length; i++) {
+                            text[i].style.cssText = "display: inline";
+                        }
+                        var text = document.getElementsByClassName("nba");
+                        for (var i = 0; i < text.length; i++) {
+                            text[i].style.cssText = "display: none";
+                        }
+                    }
+                }
+			</script>
+			<input type="text" name="allpro" value="allpro" onfocus="this.value = '';"
+			       onblur="if (this.value === '') {this.value = 'allpro';}">
+			<input type="text" name="name" value="name" onfocus="this.value = '';"
+			       onblur="if (this.value === '') {this.value = 'name';}">
+			<input type="text" name="league" value="league" onfocus="this.value = '';"
+			       onblur="if (this.value === '') {this.value = 'league';}" onkeyup="ceshi1(this.value)" onmouseup="ceshi1(this.value)">
+			<input type="text" name="born" class="nba" value="born" onfocus="this.value = '';"
+			       onblur="if (this.value === '') {this.value = 'born';}">
+			<input type="text" name="position" class="nba" value="position" onfocus="this.value = '';"
+			       onblur="if (this.value === '') {this.value = 'position';}">
+			<input type="text" name="number" class="nba" value="number" onfocus="this.value = '';"
+			       onblur="if (this.value === '') {this.value = 'number';}">
+			<input type="text" name="education" class="nba" value="education" onfocus="this.value = '';"
+			       onblur="if (this.value === '') {this.value = 'education';}">
+			<input type="text" name="teams" class="mlb" value="teams" onfocus="this.value = '';"
+			       onblur="if (this.value === '') {this.value = 'teams';}">
+			<input type="text" name="last mlb appearance" class="mlb" value="last mlb appearance" onfocus="this.value = '';"
+			       onblur="if (this.value === '') {this.value = 'last mlb appearance';}">
+			<p></p><input type="submit" value="Search">
+		</form>
+	</div>
+	<p>Sample searches: <a href="#">Modern PSD template,</a> <a href="#"> Portfolio design </a></p>
+</div>
+<!--search end here-->
+<div class="show">
+
+</div>
+<div class="copyright">
+	<p>Template by <a href="http://w3layouts.com/" target="_blank">
+		W3layouts </a></p>
+</div>
+
+</body>
+</html>
